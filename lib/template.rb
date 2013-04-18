@@ -1,16 +1,10 @@
 run 'git reset --hard'
 run 'git clean -f -d'
 
-gem 'acts-as-taggable-on', '~> 2.3.1'
-
-generate(:scaffold, "account name:uniq")
-
-generate(:scaffold, "customer name mail")
-generate(:model, "email customer:belongs_to addr:uniq priority:integer")
-
-generate :mailer, "CustomerMailer welcome seeyou blank"
-
-route "root :to => 'customers#index'"
+generate(:scaffold, "user key:uniq nickname spam:boolean")
+generate(:scaffold, "speak user:belongs_to text:text")
+generate(:controller, "session new create destroy")
+generate(:model, "auth user:belongs_to provider uid omni_hash:text")
 
 run 'rm app/views/layouts/application.html.erb'
 run 'rm app/assets/stylesheets/scaffolds.css.scss'
@@ -21,3 +15,6 @@ generate "bootstrap:themed accounts"
 run 'rm app/views/customers/*'
 generate "bootstrap:themed customers"
 generate "bootstrap:layout application fluid"
+
+generate "sorcery:install brute_force_protection activity_logging"
+generate 'acts_as_votable:migration'
