@@ -6,7 +6,13 @@ class SpeaksController < ApplicationController
 
   # GET /speaks
   def index
-    @speaks = @speaks.order("created_at DESC")
+    @speaks = @speaks
+    case params[:order]
+    when 'votes'
+      @speaks = @speaks.joins("left join votes on speaks.id = votes.votable_id and votes.votable_type='Speak'").group('speaks.id, votes.votable_id').order('count(speaks.id) DESC')
+    else
+      @speaks = @speaks.includes(:votes).order("created_at DESC")
+    end
   end
 
   # GET /speaks/1

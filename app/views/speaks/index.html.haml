@@ -5,8 +5,8 @@
   %thead
     %tr
       %th.narrow= model_class.human_attribute_name(:id)
-      %th.narrow= model_class.human_attribute_name(:created_at)
-      %th.narrow= model_class.human_attribute_name(:votes)
+      %th.narrow= params[:order].blank? ? model_class.human_attribute_name(:created_at)+ "▼" : link_to(model_class.human_attribute_name(:created_at), speaks_path)
+      %th.narrow= params[:order] == 'votes' ? model_class.human_attribute_name(:votes) + "▼" : link_to(model_class.human_attribute_name(:votes), speaks_path(order: "votes"))
       %th= model_class.human_attribute_name(:text)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
