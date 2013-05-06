@@ -17,7 +17,7 @@
         %td.narrow
           = speak.votes.count
           = vote_icon(speak)
-        %td= speak.text + " (#{speak.user.display_name})"
+        %td= with_speak_link(speak.text) + " (#{speak.user.display_name})"
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_speak_path(speak), :class => 'btn btn-mini' if can? :edit, speak
           = link_to t('.destroy', :default => t("helpers.links.destroy")), speak_path(speak), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger' if can? :destroy, speak
