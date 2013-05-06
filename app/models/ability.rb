@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can :access, :helps
     can :read, :speaks
     can :access, :users
     can :access, :sessions
