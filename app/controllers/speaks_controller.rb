@@ -48,4 +48,18 @@ class SpeaksController < ApplicationController
       format.js { head :ok }
     end
   end
+
+  def vote(id)
+    if params[:cancel]
+      current_user.unvote_for @speak
+      notice = "下げました。"
+    else
+      current_user.upvotes @speak
+      notice = "上げました。"
+    end
+    respond_to do |format|
+      format.html { redirect_to @speak, notice: notice }
+      format.js { head :ok }
+    end
+  end
 end

@@ -5,4 +5,6 @@
 body.speaks {
   th.narrow, td.narrow { width: 50px }
   td.narrow { text-align: right; }
+  .icon-gray { color: gray; visibility: hidden; }
+  tr:hover .icon-gray { visibility: visible; }
 }

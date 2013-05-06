@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  ROLES = [:admin, :attendee]
+  acts_as_voter
+  ROLES = %w(admin attendee none)
+
+  validates :username, uniqueness: true, allow_nil: true
 
   def role
     super.presence || 'none'

@@ -6,11 +6,14 @@ class Ability
     can :access, :users
     can :access, :sessions
     if user
-      case user.role
-      when "admin"
+      case user.role.to_sym
+      when :admin
         can :access, :all
+      when :attendee
+        can :vote, :speaks
+        can [:create, :update], :speaks, user_id: user.id
       else
-        can [:create], :speaks, user_id: user.id
+        #can [:vote], :speaks, user_id: user.id
       end
     end
   end
