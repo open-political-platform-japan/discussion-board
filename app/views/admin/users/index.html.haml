@@ -4,17 +4,17 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:nickname)
+      %th= model_class.human_attribute_name(:display_name)
       %th= model_class.human_attribute_name(:spam)
+      %th= model_class.human_attribute_name(:role)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @users.each do |user|
       %tr
-        %td= link_to user.id, admin_user_path(user)
-        %td= user.display_name
+        %td= link_to user.display_name, user
         %td= user.spam
+        %td= model_class.human_attribute_name("roles.#{user.role}")
         %td=l user.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_user_path(user), :class => 'btn btn-mini'

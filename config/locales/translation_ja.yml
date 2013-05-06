@@ -1,0 +1,76 @@
+ja:
+  activerecord:
+    models:
+      acts_as_taggable_on/tag: タグ
+      acts_as_taggable_on/tagging: タグ付け
+      acts_as_votable/vote: 投票
+      auth: 認証
+      speak: 発言
+      user: ユーザー
+
+    attributes:
+      acts_as_taggable_on/tag:
+        name: 名前
+        taggings: タグ付け
+
+      acts_as_taggable_on/tagging:
+        context: コンテキスト
+        tag: :activerecord.models.tag  #g
+        taggable: :activerecord.models.taggable  #g
+        taggable_type:
+        tagger: :activerecord.models.tagger  #g
+        tagger_type:
+
+      acts_as_votable/vote:
+        votable: :activerecord.models.votable  #g
+        votable_type:
+        vote_flag:
+        vote_scope:
+        voter: 投票者
+        voter_type:
+
+      auth:
+        omni_hash:
+        provider:
+        uid:
+        user: :activerecord.models.user  #g
+
+      speak:
+
+        text: 発言内容  #g
+        user: 発言者  #g
+        votable: :activerecord.models.votable  #g
+        votes: 投票  #g
+        created_at: 時刻
+
+      user:
+        crypted_password: 暗号化されたパスワード  #g
+        last_activity_at: 最後の活動で  #g
+        last_login_at: 最後のログイン時  #g
+        last_logout_at: 最後のログアウト時  #g
+        lock_expires_at: ロックの有効期限が切れる  #g
+        nickname: ニックネーム  #g
+        display_name: 表示名
+        role: 権限
+        salt:
+        spam: スパム  #g
+        unlock_token: トークンのロックを解除します。  #g
+        username: ユーザー名  #g
+        voter: :activerecord.models.voter  #g
+        votes: 投票  #g
+        created_at: 生成日
+      user/roles:
+        admin: 管理者
+        attendee: 参加者
+        none: 外野
+
+  helpers:
+    titles:
+      new: 新規%{model}
+  speaks:
+    index:
+      title: 発言一覧
+  admin:
+    users:
+      index:
+        title: ユーザー一覧

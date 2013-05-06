@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/amatsuda/i18n_generators.git
+  revision: a4bc842059456668b24873dc14cf3b63daa4ed15
+  specs:
+    i18n_generators (1.2.1)
+      mechanize
+      rails (>= 3.0.0)
+
+GIT
   remote: git://github.com/ryanb/cancan.git
   revision: e6bf4c8d12dca316eb4f0923ca30b6d3dfedb7ae
   branch: 2.0
@@ -84,9 +92,6 @@ GEM
     hike (1.2.2)
     httpauth (0.2.0)
     i18n (0.6.1)
-    i18n_generators (1.2.1)
-      mechanize
-      rails (>= 3.0.0)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -262,7 +267,7 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails
   haml-rails
-  i18n_generators
+  i18n_generators!
   jquery-rails
   jquery-ui-rails
   kaminari
