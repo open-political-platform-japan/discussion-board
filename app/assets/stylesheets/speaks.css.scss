@@ -3,5 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.speaks {
-  th { text-align: right; width: 50px }
+  th.narrow, td.narrow { width: 50px }
+  td.narrow { text-align: right; }
 }
