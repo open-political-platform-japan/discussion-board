@@ -7,6 +7,14 @@ GIT
       rails (>= 3.0.0)
 
 GIT
+  remote: git://github.com/kuboon/configurable_engine.git
+  revision: 1ba5a6075e65251122f995e6345b46e09f384548
+  specs:
+    configurable_engine (0.2.10)
+      activerecord (~> 3)
+      rails (~> 3)
+
+GIT
   remote: git://github.com/ryanb/cancan.git
   revision: e6bf4c8d12dca316eb4f0923ca30b6d3dfedb7ae
   branch: 2.0
@@ -264,6 +272,7 @@ DEPENDENCIES
   binding_of_caller
   cancan!
   coffee-rails (~> 3.2.1)
+  configurable_engine!
   exception_notification
   factory_girl_rails
   haml-rails

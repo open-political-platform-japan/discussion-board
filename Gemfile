@@ -16,6 +16,7 @@ end
 gem 'jquery-rails'
 
 gem "exception_notification"
+gem 'configurable_engine', github: "kuboon/configurable_engine"
 gem "haml-rails"
 gem "simple_form"
 gem "kaminari"

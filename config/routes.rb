@@ -15,6 +15,7 @@ DpjReflection2013::Application.routes.draw do
 
   namespace :admin do
     resources :users
+    resource :configurable
   end
 
   root to: "speaks#index"
