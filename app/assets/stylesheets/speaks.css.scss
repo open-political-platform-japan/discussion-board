@@ -3,8 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.speaks {
-  th.narrow, td.narrow { width: 6em }
-  td.narrow { text-align: right; }
-  .icon-gray { color: gray; visibility: hidden; }
-  tr:hover .icon-gray { visibility: visible; }
+  .icon-thumbs-up { color: gray; }
+  dt:hover .icon-thumbs-up { color: inherit; }
+  .icon-thumbs-up.icon-active { color: inherit; }
+  dt:hover .icon-thumbs-up.icon-active { color: gray; }
+
+  article {
+    margin: 0;
+    padding: 1em;
+    &:nth-child(odd) { background-color: #fee; }
+  }
 }
