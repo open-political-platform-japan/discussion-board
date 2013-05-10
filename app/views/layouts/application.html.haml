@@ -31,6 +31,7 @@
               %li= link_to "発言一覧", speaks_path
               %li= link_to "発言する", new_speak_path if can? :create, :speaks
               %li= link_to "ユーザ一覧", admin_users_path if can? :access, :admin_users
+              %li= link_to "config", admin_configurable_path if can? :access, :admin_configurables
             %ul.nav.pull-right
               - if logged_in?
                 %li.dropdown
