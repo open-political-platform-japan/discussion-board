@@ -27,9 +27,5 @@ describe SpeaksController do
       put("/speaks/1").should route_to("speaks#update", :id => "1")
     end
 
-    it "routes to #destroy" do
-      delete("/speaks/1").should route_to("speaks#destroy", :id => "1")
-    end
-
   end
 end

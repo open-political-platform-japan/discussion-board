@@ -13,7 +13,6 @@ describe "speaks/new" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", speaks_path, "post" do
-      assert_select "input#speak_user[name=?]", "speak[user]"
       assert_select "textarea#speak_text[name=?]", "speak[text]"
     end
   end

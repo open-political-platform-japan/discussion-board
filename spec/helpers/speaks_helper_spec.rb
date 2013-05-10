@@ -11,5 +11,12 @@ require 'spec_helper'
 #   end
 # end
 describe SpeaksHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @speak = create :speak
+    @user = @speak.user
+  end
+  describe "with_speak_link" do
+    subject { helper.with_speak_link("テスト##{@speak.id}テスト") }
+    it { should include(speak_path(@speak)) }
+  end
 end

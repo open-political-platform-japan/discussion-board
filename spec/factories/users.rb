@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
-    sequence(:username){|n| n}
-    password { 8.times.map{"abcdefghjkmnpqrtuvwxyzABCDEFGHJKLMNPQRTUVWXY346789".split("").sample}.join }
+    sequence(:username){|n| n.to_s}
+    password { 'abcdefghjkmnpqrtuvwxyzABCDEFGHJKLMNPQRTUVWXY346789+-=!#$%&'.chars.sample(8).join }
     trait(:admin)   { role :admin }
     trait(:attendee){ role :attendee }
   end

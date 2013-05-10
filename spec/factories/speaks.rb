@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :speak do
-    user nil
+    association :user, :attendee
     text "MyText"
   end
 end

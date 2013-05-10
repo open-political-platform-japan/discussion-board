@@ -1,128 +1,63 @@
-require 'spec_helper'
-
 describe UsersController do
+
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
-    { "key" => "MyString" }
+  # adjust the attributes here as well.
+  let(:valid_attributes) { FactoryGirl.attributes_for(:user) }
+
+  # This should return the minimal set of values that should be in the session
+  # in order to pass any filters (e.g. authentication) defined in
+  # UsersController. Be sure to keep this updated too.
+  let(:valid_session) { { user_id: @user.id } }
+
+  before do
+    @user = FactoryGirl.create(:user)
   end
 
-  describe 'GET index' do
-    before do
-      @user = User.create! valid_attributes
-      controller.index
-    end
-    describe 'assigns all users as @users' do
-      subject { controller.instance_variable_get('@users') }
-      it { should eq([@user]) }
-    end
-  end
-
-  describe 'GET show' do
-    before do
-      @user = User.create! valid_attributes
-      controller.show(@user.to_param)
-    end
-    describe 'assigns the requested user as @user' do
-      subject { controller.instance_variable_get('@user') }
-      it { should eq(@user) }
+  describe "GET show" do
+    subject { get :show, {id: @user.to_param}, valid_session }
+    it "assigns the requested user as @user" do
+      subject
+      expect(assigns(:user)).to eq(@user)
     end
   end
 
-  describe 'GET new' do
-    before do
-      controller.new
-    end
-    describe 'assigns a new user as @user' do
-      subject { controller.instance_variable_get('@user') }
-      it { should be_a_new(User) }
+  describe "GET edit" do
+    subject(:action){ get :edit, {id: @user.to_param}, valid_session }
+    it "assigns the requested user as @user" do
+      subject
+      expect(assigns(:user)).to eq(@user)
     end
   end
 
-  describe 'GET edit' do
-    before do
-      @user = User.create! valid_attributes
-      controller.edit(@user.to_param)
-    end
-    describe 'assigns the requested user as @user' do
-      subject { controller.instance_variable_get('@user') }
-      it { should eq(@user) }
-    end
-  end
-
-  describe 'POST create' do
-    context 'with valid params' do
-      before do
-        controller.should_receive(:redirect_to) {|u| u.should eq(User.last) }
-      end
-      describe 'creates a new User' do
-        it { expect {
-          controller.create(valid_attributes)
-        }.to change(User, :count).by(1) }
+  describe "PUT update" do
+    subject(:action){ put :update, {id: @user.to_param, user: attributes}, valid_session }
+    describe "with valid params" do
+      let(:attributes){ { "username" => "updated_name" } }
+      it "updates the requested user" do
+        subject
+        expect(assigns(:user).username).to eq('updated_name')
       end
 
-      describe 'assigns a newly created user as @user and redirects to the created user' do
-        before do
-          controller.create(valid_attributes)
-        end
-        subject { controller.instance_variable_get('@user') }
-        it { should be_a(User) }
-        it { should be_persisted }
+      it "assigns the requested user as @user" do
+        subject
+        expect(assigns(:user)).to eq(@user)
+      end
+
+      it "redirects to the user" do
+        subject
+        expect(response).to redirect_to(@user)
       end
     end
 
-    context 'with invalid params' do
-      describe "assigns a newly created but unsaved user as @user, and re-renders the 'new' template" do
-        before do
-          User.any_instance.stub(:save) { false }
-          controller.should_receive(:render).with(:action => 'new')
-          controller.create({ "key" => "invalid value" })
-        end
-        subject { controller.instance_variable_get('@user') }
-        it { should be_a_new(User) }
+    describe "with invalid params" do
+      let(:attributes){ { "nickname" => "" } }
+      it "assigns the user as @user" do
+        subject
+        expect(assigns(:user)).to eq(@user)
       end
-    end
-  end
 
-  describe 'PUT update' do
-    context 'with valid params' do
-      describe 'updates the requested user, assigns the requested user as @user, and redirects to the user' do
-        before do
-          @user = User.create! valid_attributes
-          controller.should_receive(:redirect_to).with(@user, anything)
-          controller.update(@user.to_param, valid_attributes)
-        end
-        subject { controller.instance_variable_get('@user') }
-        it { should eq(@user) }
-      end
-    end
-
-    context 'with invalid params' do
-      describe "assigns the user as @user, and re-renders the 'edit' template" do
-        before do
-          @user = User.create! valid_attributes
-          # Trigger the behavior that occurs when invalid params are submitted
-          User.any_instance.stub(:save) { false }
-          controller.should_receive(:render).with(:action => 'edit')
-          controller.update(@user.to_param, { "key" => "invalid value" })
-        end
-        subject { controller.instance_variable_get('@user') }
-        it { should eq(@user) }
-      end
-    end
-  end
-
-  describe 'DELETE destroy' do
-    before do
-      @user = User.create! valid_attributes
-      controller.stub(:users_url) { '/users' }
-      controller.should_receive(:redirect_to).with('/users')
-    end
-    it 'destroys the requested user, and redirects to the users list' do
-      expect {
-        controller.destroy(@user.to_param)
-      }.to change(User, :count).by(-1)
+      it { should render_template("edit") }
     end
   end
 end
