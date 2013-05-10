@@ -18,5 +18,5 @@ DpjReflection2013::Application.routes.draw do
     resource :configurable
   end
 
-  root to: "speaks#index"
+  root to: redirect("/speaks")
 end

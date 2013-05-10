@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    login(params[:user][:username], params[:user][:password])
+    user_params = params[:user] || {}
+    login(user_params[:username], user_params[:password])
     if logged_in?
       redirect_to root_url, notice: "ログインしました。"
     else
