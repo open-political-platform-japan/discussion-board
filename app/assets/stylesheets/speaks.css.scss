@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.speaks {
-  th.narrow, td.narrow { width: 50px }
+  th.narrow, td.narrow { width: 6em }
   td.narrow { text-align: right; }
   .icon-gray { color: gray; visibility: hidden; }
   tr:hover .icon-gray { visibility: visible; }

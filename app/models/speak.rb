@@ -1,5 +1,6 @@
 class Speak < ActiveRecord::Base
   acts_as_votable
   belongs_to :user
-  attr_accessible :text
+
+  validates :text, length: 3..140
 end

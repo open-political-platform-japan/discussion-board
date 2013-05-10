@@ -30,7 +30,7 @@ class SpeaksController < ApplicationController
   # POST /speaks
   def create(speak)
     if @speak.save
-      redirect_to @speak, notice: '発言を作成しました。'
+      redirect_to @speak, notice: I18n.t("helpers.notices.created", model: Speak.model_name.human)
     else
       render action: 'new'
     end
@@ -39,19 +39,9 @@ class SpeaksController < ApplicationController
   # PUT /speaks/1
   def update(id, speak)
     if @speak.update_attributes(speak)
-      redirect_to @speak, notice: '発言を更新しました。'
+      redirect_to @speak, notice: I18n.t("helpers.notices.updated", model: Speak.model_name.human)
     else
       render action: 'edit'
-    end
-  end
-
-  # DELETE /speaks/1
-  def destroy(id)
-    @speak.destroy
-
-    respond_to do |format|
-      format.html { redirect_to speaks_url, notice: "発言を削除しました。" }
-      format.js { head :ok }
     end
   end
 

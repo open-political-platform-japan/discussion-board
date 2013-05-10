@@ -67,6 +67,10 @@ ja:
   helpers:
     titles:
       new: 新規%{model}
+    notices:
+      created: "%{model}を作成しました。"
+      updated: "%{model}を更新しました。"
+      destroyed: "%{model}を削除しました。"
   speaks:
     index:
       title: 発言一覧
