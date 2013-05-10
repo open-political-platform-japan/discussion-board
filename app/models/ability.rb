@@ -13,6 +13,7 @@ class Ability
       when :attendee
         can :vote, :speaks
         can [:create, :update], :speaks, user_id: user.id
+        can [:create, :update], :users, id: user.id
       else
         #can [:vote], :speaks, user_id: user.id
       end

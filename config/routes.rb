@@ -7,8 +7,8 @@ DpjReflection2013::Application.routes.draw do
   resources :speaks, except: :destroy do
     post :vote, on: :member
   end
-  resources :users, only: :show
-  resource  :user, except: [:new, :destroy]
+
+  resources  :users, except: [:new, :destroy]
 
   resource :session, only: [:new, :create, :destroy]
   match "sessions/destroy"

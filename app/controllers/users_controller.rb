@@ -2,21 +2,19 @@
 
 class UsersController < ApplicationController
   permits :nickname
-  before_filter do
-    @user = params[:id] ? User.find(params[:id]) : (current_user || User.new(params[:user]))
-  end
+  load_and_authorize_resource
 
   # GET /users/1
-  def show(id = nil)
+  def show(id)
 
   end
 
   # GET /users/1/edit
-  def edit
+  def edit(id)
   end
 
   # PUT /users/1
-  def update(user)
+  def update(id, user)
     if @user.update_attributes(user)
       redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -25,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
-  def destroy
+  def destroy(id)
     @user.destroy
 
     redirect_to users_url
