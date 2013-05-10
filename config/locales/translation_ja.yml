@@ -51,11 +51,12 @@ ja:
         lock_expires_at: ロックの有効期限が切れる  #g
         nickname: ニックネーム  #g
         display_name: 表示名
+        password: パスワード
         role: 権限
         salt:
         spam: スパム  #g
         unlock_token: トークンのロックを解除します。  #g
-        username: ユーザー名  #g
+        username: ID
         voter: :activerecord.models.voter  #g
         votes: 投票  #g
         created_at: 生成日
