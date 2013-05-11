@@ -15,8 +15,7 @@
 これらの条件を満たす為に、あらかじめ用意した 600 組の ID/password を当日の参加者に配布するという形を取ります。 どの参加者にどの ID が渡されるかは完全にランダムですので、自分の意志で ID を公開しない限り、特定個人と発言者が結びつくことはありません。 
 
 ## 誰が作ったの？
-会の運営スタッフの依頼により、 [大久保 康平][9] が開発しました。全てのソースコードは [GitHub][10] にて公開しています。 皆様からの pull-request を歓迎します。 
+会の運営スタッフの依頼により、 [Open Political Platform Japan][9] が開発しました。皆様からの pull-request を歓迎します。
 
  [8]: http://www.dpj-youth.net/reflection2013/
- [9]: https://twitter.com/kuboon
- [10]: https://github.com/kuboon/dpj-reflection2013
+ [9]: https://github.com/organizations/open-political-platform-japan
