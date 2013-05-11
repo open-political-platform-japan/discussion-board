@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510113831) do
+ActiveRecord::Schema.define(:version => 20130511072211) do
 
   create_table "auths", :force => true do |t|
     t.integer  "user_id"
@@ -34,12 +34,20 @@ ActiveRecord::Schema.define(:version => 20130510113831) do
   add_index "configurables", ["name"], :name => "index_configurables_on_name"
 
   create_table "speaks", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.text     "text",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",                           :null => false
+    t.text     "text",                              :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_score", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
+    t.integer  "cached_votes_down",  :default => 0
   end
 
+  add_index "speaks", ["cached_votes_down"], :name => "index_speaks_on_cached_votes_down"
+  add_index "speaks", ["cached_votes_score"], :name => "index_speaks_on_cached_votes_score"
+  add_index "speaks", ["cached_votes_total"], :name => "index_speaks_on_cached_votes_total"
+  add_index "speaks", ["cached_votes_up"], :name => "index_speaks_on_cached_votes_up"
   add_index "speaks", ["user_id"], :name => "index_speaks_on_user_id"
 
   create_table "taggings", :force => true do |t|

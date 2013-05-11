@@ -79,3 +79,10 @@ ja:
     users:
       index:
         title: ユーザー一覧
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "..."

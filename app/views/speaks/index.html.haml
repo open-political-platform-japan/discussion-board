@@ -4,11 +4,13 @@
 = render "search_form"
 %ul.nav.nav-tabs
   %li{class: params[:order].blank? && :active}
-    %a{href: speaks_path} 時間順
+    = sort_link @q, :created_at, "時間順"
   %li{class: params[:order]=="votes" && :active}
-    %a{href: speaks_path(order: :votes)} 投票順
+    = sort_link @q, :cached_votes_score, "投票順", default_order: :desc
 .speaks
-  - @speaks.each do |speak|
+  - speaks = @speaks.page(params[:page])
+  = paginate speaks
+  - speaks.each do |speak|
     %article
       %header
         = link_to speak do
@@ -19,3 +21,4 @@
         = link_to t('.edit', :default => t("helpers.links.edit")), edit_speak_path(speak), :class => 'btn btn-mini' if can? :edit, speak
       %p
         = with_speak_link(speak.text)
+  = paginate speaks
