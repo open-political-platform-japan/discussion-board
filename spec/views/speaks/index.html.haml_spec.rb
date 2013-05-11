@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "speaks/index" do
   before(:each) do
     @speaks = assign(:speaks, create_list(:speak, 2))
+    @q = Speak.search
   end
 
   it "renders a list of speaks" do

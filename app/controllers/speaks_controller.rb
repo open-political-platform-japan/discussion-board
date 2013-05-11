@@ -35,7 +35,7 @@ class SpeaksController < ApplicationController
       return render action: :new
     end
     if @speak.save
-      redirect_to @speak, notice: I18n.t("helpers.notices.created", model: Speak.model_name.human)
+      redirect_to speaks_path, notice: "発言しました"
     else
       render action: 'new'
     end
