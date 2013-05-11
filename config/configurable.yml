@@ -12,6 +12,10 @@ admin_message:
   name: 管理者からひとこと
   type: string
 
+speak_from:
+  name: n番以降のみ表示
+  type: integer
+
 # site_title:
 #   name: Site Title
 #   default: My Site

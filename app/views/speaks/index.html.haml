@@ -13,7 +13,9 @@
   %li{class: params[:order].blank? && :active}
     %a{href: speaks_path} 時間順
   %li{class: params[:order]=="votes" && :active}
-    %a{href: speaks_path(order: :votes)} 投票順
+    %a{href: speaks_path(order: :votes)}
+      投票順
+      = "(#{Configurable.speak_from}番以降)" if Configurable.speak_from.to_i > 0
 
 = check_box_tag :auto_refresh
 自動更新する
