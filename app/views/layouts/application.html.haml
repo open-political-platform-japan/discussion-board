@@ -55,7 +55,7 @@
           - if Configurable.admin_message.present?
             .alert.alert-notice
               管理者より:
-              = Configurable.admin_message
+              =raw Configurable.admin_message
           = yield
     
       %footer
