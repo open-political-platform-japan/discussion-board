@@ -15,4 +15,6 @@
   %li{class: params[:order]=="votes" && :active}
     %a{href: speaks_path(order: :votes)} 投票順
 
+= check_box_tag :auto_refresh
+自動更新する
 #speaks= render "speaks"
