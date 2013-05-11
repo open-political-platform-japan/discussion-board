@@ -83,6 +83,24 @@ describe SpeaksController do
       it "redirects to the created speak" do
         expect(subject).to redirect_to(Speak.last)
       end
+
+      context "over the limit" do
+        before do
+          create_list(:speak, Configurable.speak_limit_counts, user: @speak.user)
+        end
+        it "re-renders the 'new' template" do
+          expect(subject).to render_template("new")
+        end
+      end
+
+      context "over the limit but time elapsed" do
+        before do
+          create_list(:speak, Configurable.speak_limit_counts, user: @speak.user, created_at: Configurable.speak_limit_per_minutes.minutes.ago - 1 )
+        end
+        it "creates a new Speak" do
+          expect{subject}.to change(Speak, :count).by(1)
+        end
+      end
     end
 
     describe "with invalid params" do

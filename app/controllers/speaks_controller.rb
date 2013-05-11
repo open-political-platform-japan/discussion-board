@@ -29,6 +29,9 @@ class SpeaksController < ApplicationController
 
   # POST /speaks
   def create(speak)
+    if Speak.where(user_id: current_user.id).where("? < created_at", Configurable.speak_limit_per_minutes.minutes.ago).count > Configurable.speak_limit_counts
+      return render action: :new
+    end
     if @speak.save
       redirect_to @speak, notice: I18n.t("helpers.notices.created", model: Speak.model_name.human)
     else
