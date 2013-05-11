@@ -15,6 +15,7 @@ end
 
 gem 'jquery-rails'
 
+gem 'unicorn'
 gem "exception_notification"
 gem 'configurable_engine', github: "kuboon/configurable_engine"
 gem "haml-rails"
