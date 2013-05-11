@@ -52,6 +52,10 @@
       .row-fluid
         .span12
           = bootstrap_flash
+          - if Configurable.admin_message.present?
+            .alert.alert-notice
+              管理者より:
+              = Configurable.admin_message
           = yield
     
       %footer

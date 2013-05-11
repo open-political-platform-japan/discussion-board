@@ -8,6 +8,10 @@ speak_limit_counts:
   type: integer
   default: 10
 
+admin_message:
+  name: 管理者からひとこと
+  type: string
+
 # site_title:
 #   name: Site Title
 #   default: My Site
