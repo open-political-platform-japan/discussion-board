@@ -80,8 +80,8 @@ describe SpeaksController do
         expect(assigns(:speak)).to be_persisted
       end
 
-      it "redirects to the created speak" do
-        expect(subject).to redirect_to(Speak.last)
+      it "redirects to the speaks index" do
+        expect(subject).to redirect_to(speaks_url)
       end
 
       context "over the limit" do
