@@ -7,7 +7,14 @@ class SpeaksController < ApplicationController
   # GET /speaks
   def index
     @q = Speak.includes(:user).search(params[:q])
-    @speaks = @q.result(:distinct => true)
+    if params[:q]
+      @q = Speak.includes(:user).search(params[:q])
+      @speaks = @q.result(:distinct => true)
+    elsif params[:order] == 'votes'
+      @speaks = Speak.includes(:user).order('cached_votes_score DESC')
+    else
+      @speaks = Speak.includes(:user).order("created_at DESC")
+    end
   end
 
   # GET /speaks/1
