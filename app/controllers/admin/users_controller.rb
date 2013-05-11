@@ -2,7 +2,7 @@
 
 class Admin::UsersController < ApplicationController
   permits :spam
-  load_and_authorize_resource except: :create_bulk
+  load_and_authorize_resource
 
   # GET /users
   def index
@@ -26,10 +26,10 @@ class Admin::UsersController < ApplicationController
     count = 0
     users.split(/\n/).each do |line|
       username, password = line.split(/,/)
-      User.create!(username: username, password: password, role: :attendee)
+      User.create!(username: username, password: password.chomp, role: :attendee)
       count += 1
     end
-    redirect_to admin_users_path, notice: '#{count} users were successfully created.'
+    redirect_to admin_users_path, notice: "#{count} users were successfully created."
   end
 
   # PUT /users/1
@@ -45,6 +45,6 @@ class Admin::UsersController < ApplicationController
   def destroy(id)
     @user.destroy
 
-    redirect_to users_url
+    redirect_to admin_users_url
   end
 end
