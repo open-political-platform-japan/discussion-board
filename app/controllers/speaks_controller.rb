@@ -2,11 +2,12 @@
 
 class SpeaksController < ApplicationController
   permits :text
-  load_and_authorize_resource
+  load_and_authorize_resource except: :index
 
   # GET /speaks
   def index
-    @speaks = @speaks
+    @q = Speak.includes(:user).search(params[:q])
+    @speaks = @q.result(:distinct => true)
     case params[:order]
     when 'votes'
       @speaks = @speaks.joins("left join votes on speaks.id = votes.votable_id and votes.votable_type='Speak'").group('speaks.id, votes.votable_id').order('count(speaks.id) DESC')

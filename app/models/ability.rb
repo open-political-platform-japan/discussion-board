@@ -9,6 +9,7 @@ class Ability
     if user
       case user.role.to_sym
       when :admin
+        can [:create, :update], :speaks, user_id: user.id
         can :access, :all
       when :attendee
         can :vote, :speaks

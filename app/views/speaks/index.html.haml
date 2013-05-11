@@ -1,6 +1,7 @@
 - model_class = Speak
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
+= render "search_form"
 %ul.nav.nav-tabs
   %li{class: params[:order].blank? && :active}
     %a{href: speaks_path} 時間順
