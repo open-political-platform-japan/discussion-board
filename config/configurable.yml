@@ -16,6 +16,10 @@ speak_from:
   name: n番以降のみ表示
   type: integer
 
+speak_length:
+  name: 発言の最大長さ
+  type: integer
+  default: 140
 # site_title:
 #   name: Site Title
 #   default: My Site
