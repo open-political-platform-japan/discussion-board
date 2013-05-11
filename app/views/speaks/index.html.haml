@@ -15,18 +15,4 @@
   %li{class: params[:order]=="votes" && :active}
     %a{href: speaks_path(order: :votes)} 投票順
 
-.speaks
-  - speaks = @speaks.page(params[:page])
-  = paginate speaks
-  - speaks.each do |speak|
-    %article
-      %header
-        = link_to speak do
-          [#{speak.id}] #{time_ago_in_words speak.created_at}前
-        (#{speak.user.display_name})
-        = speak.votes.count
-        = vote_icon(speak)
-        = link_to t('.edit', :default => t("helpers.links.edit")), edit_speak_path(speak), :class => 'btn btn-mini' if can? :edit, speak
-      %p
-        = with_speak_link(speak.text)
-  = paginate speaks
+#speaks= render "speaks"
