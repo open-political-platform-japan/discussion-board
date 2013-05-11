@@ -1,0 +1,7 @@
+%span{id: "vote_#{speak.id}"}
+  = speak.votes.count
+  - if can? :vote, speak
+    - if current_user.liked? speak
+      = link_to glyph(:thumbs_up, :active), vote_speak_path(speak, cancel: true), method: :post, remote: true
+    - else
+      = link_to glyph(:thumbs_up), vote_speak_path(speak), method: :post, remote: true

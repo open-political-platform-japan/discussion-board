@@ -61,7 +61,7 @@ class SpeaksController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to @speak, notice: notice }
-      format.js { head :ok }
+      format.js
     end
   end
 end
