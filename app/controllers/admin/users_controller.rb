@@ -2,7 +2,7 @@
 
 class Admin::UsersController < ApplicationController
   permits :spam
-  load_and_authorize_resource
+  load_and_authorize_resource except: :create_bulk
 
   # GET /users
   def index
@@ -21,12 +21,15 @@ class Admin::UsersController < ApplicationController
   end
 
   # POST /users
-  def create(user)
-    if @user.save
-      redirect_to admin_user_path(@user), notice: 'User was successfully created.'
-    else
-      render action: 'new'
+  def create
+    users = params[:users]
+    count = 0
+    users.split(/\n/).each do |line|
+      username, password = line.split(/,/)
+      User.create!(username: username, password: password, role: :attendee)
+      count += 1
     end
+    redirect_to admin_users_path, notice: '#{count} users were successfully created.'
   end
 
   # PUT /users/1
