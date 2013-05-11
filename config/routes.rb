@@ -16,6 +16,7 @@ DpjReflection2013::Application.routes.draw do
   namespace :admin do
     resources :users
     resource :configurable
+    get "speaks/download_all"
   end
 
   root to: redirect("/speaks")
