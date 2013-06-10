@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "speaks/index" do
   before(:each) do
-    @speaks = assign(:speaks, create_list(:speak, 2))
+    @speaks = assign(:speaks, Kaminari.paginate_array(create_list(:speak, 2)).page(1))
     @q = Speak.search
   end
 

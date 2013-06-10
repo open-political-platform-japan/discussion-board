@@ -4,6 +4,10 @@ describe User do
   before do
     @user = create :user
   end
+  describe "factory" do
+    it { build(:user).should be_valid }
+    it { create(:user).should be_valid }
+  end
   describe "display_name" do
     subject { @user.display_name }
     context "without nickname" do
