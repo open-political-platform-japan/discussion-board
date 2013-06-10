@@ -1,15 +1,37 @@
----
+bundler_args: --without development --path=~/.bundle
+language: ruby
 rvm:
 - 2.0.0
 branches:
   only:
   - master
-script: ruby ci.rb travis
-after_success:
-- sh ruby ci.rb travis_deploy
 env:
   global:
-    secure: |-
+  - BUNDLE_ARCHIVE="discuss_gem"
+  - AWS_S3_REGION="us-east-1"
+  - AWS_S3_BUCKET="discuss_gem"
+  - RAILS_ENV=test
+  - secure: |-
       e93+5rJiEv/pOSHsZ8Pa2NAiUSSn5sMW9VjWE5zEd8BWfstrJcO6vdTkMS31
       7xEl0NAGX7nhFfYVO7wc3bY6tpsFbrPC7VgqyyTC3IEFw9u+fot3Hf5DqQjK
       jpW576a02xwUsavCM5DFisoLnWU8UyBh/yE4WII/jkgR78WgX08=
+  - secure: |-
+      lLXddlCVgFeY1hDmJjYYlUxCn78dm28Na6JlM7Pb4hFGt1AZ31mioevtt5dp
+      HBAvbVOQ26XbpaqxJh1qI/IiM54fuiS4Y/JUdd9yFVmRtFFLqMHm8XioX/oj
+      don4pN1AdsX6j7mso4T0EOQbT4F8VpTPpxXi6UAAgNV6sTDDDZc=
+
+# Ensure Bundler >= 1.1, don't install rdocs, and fetch a cached bundle from S3
+before_install:
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+  - gem install bundler fog
+  - "./script/travis/bundle_install.sh"
+
+before_script:
+  - "cp config/database.example.yml config/database.yml"
+
+after_script:
+- "ruby script/travis/bundle_cache.rb"
+after_success:
+- "ruby script/travis/deploy.rb"
+
+script: "bundle exec rake db:create db:test:load spec"
