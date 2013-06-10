@@ -1,21 +1,17 @@
-# 民主党大反省会ディスカッションボード
+# ディスカッションボード
+{<img src="https://travis-ci.org/open-political-platform-japan/discussion-board.png?branch=master" alt="Build Status" />}[https://travis-ci.org/open-political-platform-japan/discussion-board]
 
 ## これは何？
-このシステムは、2013年5月11日に開催される[民主党公開大反省会][8]の為に開発された、ディスカッションボードシステムです。
+このシステムは、公開討議等で参加者からの発言を集約するためのディスカッションボードシステムです。
 このシステムに「参加者」としてログインしたユーザーは自由に発言が出来ます。発言内容はすべて一般に公開されます。
 会の運営スタッフはこれらの意見をもとに、司会進行をしてゆきます。 
 
 ## どんな特徴があるの？
-本システムの開発にあたり、以下の要求がありました。 
-
-*   発言を会の参加者（30歳以下600名）に限定する
-*   参加者の匿名性を担保する
-*   参加者は PC やスマートフォンを持っているとは限らない為、WiFi によるアクセス制限は出来ない
-
-これらの条件を満たす為に、あらかじめ用意した 600 組の ID/password を当日の参加者に配布するという形を取ります。 どの参加者にどの ID が渡されるかは完全にランダムですので、自分の意志で ID を公開しない限り、特定個人と発言者が結びつくことはありません。 
+### 投票システム
+ログインユーザーは、任意の発言に対して同意を示すことが出来ます。
+発言は投票順に並べる事が出来ます。また、その際に「発言番号○○番以降」という指定が出来ますので、会の進行にあわせて、最新の話題における人気発言を追うことが出来ます。
 
 ## 誰が作ったの？
-会の運営スタッフの依頼により、 [Open Political Platform Japan][9] が開発しました。皆様からの pull-request を歓迎します。
+会の運営スタッフの依頼により、 [Open Political Platform Japan][1] が開発しました。皆様からの pull-request を歓迎します。
 
- [8]: http://www.dpj-youth.net/reflection2013/
- [9]: https://github.com/organizations/open-political-platform-japan
+ [1]: https://github.com/organizations/open-political-platform-japan
