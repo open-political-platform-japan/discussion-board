@@ -7,3 +7,9 @@ branches:
 script: ruby ci.rb travis
 after_success:
 - sh ruby ci.rb travis_deploy
+env:
+  global:
+    secure: |-
+      e93+5rJiEv/pOSHsZ8Pa2NAiUSSn5sMW9VjWE5zEd8BWfstrJcO6vdTkMS31
+      7xEl0NAGX7nhFfYVO7wc3bY6tpsFbrPC7VgqyyTC3IEFw9u+fot3Hf5DqQjK
+      jpW576a02xwUsavCM5DFisoLnWU8UyBh/yE4WII/jkgR78WgX08=
