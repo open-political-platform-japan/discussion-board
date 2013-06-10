@@ -20,6 +20,12 @@ speak_length:
   name: 発言の最大長さ
   type: integer
   default: 140
+
+title:
+  name: タイトル
+  type: string
+  default: DiscussionBoard
+
 # site_title:
 #   name: Site Title
 #   default: My Site
