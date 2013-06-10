@@ -8,7 +8,7 @@ DiscussionBoard::Application.routes.draw do
     post :vote, on: :member
   end
 
-  resources  :users, except: [:new, :destroy]
+  resources :users, except: [:destroy]
 
   resource :session, only: [:new, :create, :destroy]
   match "sessions/destroy"

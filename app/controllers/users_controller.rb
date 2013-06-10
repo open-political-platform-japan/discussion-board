@@ -1,6 +1,7 @@
 # coding: utf-8
 
 class UsersController < ApplicationController
+  respond_to :html
   permits :nickname
   load_and_authorize_resource
 
@@ -11,6 +12,14 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit(id)
+  end
+
+  def create(user)
+    if @user.save
+      flash.notice = I18n.t("helpers.notices.created", model: User.model_name.human)
+      auto_login(@user)
+    end
+    respond_with @user, location: root_url
   end
 
   # PUT /users/1
