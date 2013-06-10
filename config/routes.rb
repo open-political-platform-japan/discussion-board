@@ -1,4 +1,4 @@
-DpjReflection2013::Application.routes.draw do
+DiscussionBoard::Application.routes.draw do
 
   controller :helps do
     get :introduction

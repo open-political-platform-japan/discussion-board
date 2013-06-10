@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-DpjReflection2013::Application.load_tasks
+DiscussionBoard::Application.load_tasks
