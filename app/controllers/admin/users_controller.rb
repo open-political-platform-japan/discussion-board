@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
     count = 0
     users.split(/\n/).each do |line|
       username, password = line.split(/,/)
-      User.create!(username: username, password: password.chomp, role: :attendee)
+      User.create!(username: username, nickname: "匿名_#{username}", password: password.chomp, role: :attendee)
       count += 1
     end
     redirect_to admin_users_path, notice: "#{count} users were successfully created."
