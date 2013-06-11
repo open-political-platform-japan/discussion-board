@@ -3,7 +3,14 @@
     = link_to speak do
       [#{speak.id}] #{time_ago_in_words speak.created_at}前
     (#{speak.user.display_name})
-    = render "vote_icon", speak: speak
+    %span{id: "vote_#{speak.id}"}
+      = speak.cached_votes_score
+      - if can? :vote, speak
+        - if current_user.votes.pluck(:votable_id).include? speak.id
+          = link_to glyph(:thumbs_up, :active), vote_speak_path(speak, cancel: true), method: :post, remote: true
+        - else
+          = link_to glyph(:thumbs_up), vote_speak_path(speak), method: :post, remote: true
+
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_speak_path(speak), :class => 'btn btn-mini' if can? :update, speak
   %p
     = with_speak_link(speak.text)
