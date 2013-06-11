@@ -14,7 +14,7 @@ class SpeaksController < ApplicationController
       @speaks = Speak.includes(:user, :votes).order('cached_votes_score DESC, created_at DESC')
       @speaks = @speaks.where("? <= id", Configurable.speak_from) if Configurable.speak_from.to_i > 0
     else
-      @speaks = Speak.includes(:user, :votes).order("created_at DESC")
+      @speaks = Speak.includes(:votes, user: :votes).order("created_at DESC")
     end
   end
 
