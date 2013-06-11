@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   ROLES = %w(admin attendee none)
 
   validates :username, uniqueness: true, allow_nil: true
-  validates :nickname, length:{ in: 2..10, allow_nil: true}
+  validates :nickname, length:{ in: 2..10 }
   validates :password, :presence => true, length: 6..40, :on => :create
   validates_confirmation_of :password
 

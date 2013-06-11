@@ -16,4 +16,5 @@
   = @user.role
 
 .form-actions
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(@user), :class => 'btn' if can? :update, @user
   = link_to t('.back', :default => t("helpers.links.back")), root_path, :class => 'btn'

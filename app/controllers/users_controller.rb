@@ -10,16 +10,23 @@ class UsersController < ApplicationController
 
   end
 
+  def new
+    @user.nickname = "匿名"
+  end
+
   # GET /users/1/edit
   def edit(id)
   end
 
   def create(user)
+    @user.password = 'abcdefghjkmnpqrtuvwxyzABCDEFGHJKLMNPQRTUVWXY346789+-=!#$%&'.chars.sample(6).join
+    @user.role = :attendee
     if @user.save
-      flash.notice = I18n.t("helpers.notices.created", model: User.model_name.human)
+      @user.update_column(:username, @user.id)
+      flash.notice = "アカウントを作成しました。他の端末で同じアカウントでログインしたい方は、<a href='#{user_path(@user)}'>マイページ</a>からパスワードを設定してください。"
       auto_login(@user)
     end
-    respond_with @user, location: root_url
+    respond_with @user, location: speaks_url
   end
 
   # PUT /users/1

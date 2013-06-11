@@ -40,7 +40,7 @@
                     = current_user.display_name
                     %b.caret
                   %ul.dropdown-menu
-                    %li= link_to 'マイページ', edit_user_path(current_user)
+                    %li= link_to 'マイページ', user_path(current_user)
                     %li= link_to 'ログアウト', sessions_destroy_path
               - else
                 %li= link_to '登録', new_user_path
