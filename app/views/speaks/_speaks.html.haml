@@ -1,4 +1,4 @@
-- speaks = @speaks.page(params[:page])
+- speaks = @speaks.page(params[:page]).per(50)
 = paginate speaks, remote: true
 = render speaks
 = paginate speaks, remote: true

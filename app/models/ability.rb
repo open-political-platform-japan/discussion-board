@@ -13,7 +13,10 @@ class Ability
         can :access, :all
       when :attendee
         can :vote, :speaks
-        can [:create, :update], :speaks, user_id: user.id
+        can [:create], :speaks, user_id: user.id
+        can [:update], :speaks do |s|
+          s.user_id == user.id && 1.minutes.ago < s.created_at
+        end
         can [:create, :update], :users, id: user.id
       else
         #can [:vote], :speaks, user_id: user.id
