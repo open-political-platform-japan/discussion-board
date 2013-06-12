@@ -1,5 +1,5 @@
 # ディスカッションボード
-[![Build Status](https://travis-ci.org/open-political-platform-japan/discussion-board.png)](https://travis-ci.org/open-political-platform-japan/discussion-board)
+[![Build Status](https://drone.io/github.com/open-political-platform-japan/discussion-board/status.png)](https://drone.io/github.com/open-political-platform-japan/discussion-board/latest)
 
 ## これは何？
 このシステムは、公開討議等で参加者からの発言を集約するためのディスカッションボードシステムです。
