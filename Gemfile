@@ -12,7 +12,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'unicorn'
 gem "exception_notification"
 gem 'configurable_engine', github: "kuboon/configurable_engine"
 gem "haml-rails"
@@ -22,8 +21,6 @@ gem "action_args"
 gem "strong_parameters"
 gem "factory_girl_rails"
 gem "cancan", :git => "git://github.com/ryanb/cancan.git", :branch => "2.0"
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
 gem 'acts_as_votable'
 gem "acts-as-taggable-on"
 gem "sorcery"
@@ -34,7 +31,6 @@ gem "jquery-ui-rails"
 gem "ransack"
 
 group :development do
-  gem "i18n_generators", git: "git://github.com/amatsuda/i18n_generators.git"
   gem "better_errors"
   gem 'binding_of_caller'
   gem 'meta_request'
