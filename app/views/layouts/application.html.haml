@@ -38,7 +38,7 @@
                   %li= link_to 'マイページ', user_path(current_user)
                   %li= link_to 'ログアウト', sessions_destroy_path
             - else
-              %li= link_to '登録', new_user_path
+              %li= link_to '登録', new_user_path unless Configurable.stop_speaking
               %li= link_to 'ログイン', new_session_path
 
             %li= link_to glyph(:question_sign), introduction_path

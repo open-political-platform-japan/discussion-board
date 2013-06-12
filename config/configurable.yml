@@ -26,6 +26,11 @@ title:
   type: string
   default: DiscussionBoard
 
+stop_speaking:
+  name: 発言停止
+  type: boolean
+  default: false
+
 # site_title:
 #   name: Site Title
 #   default: My Site
