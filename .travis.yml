@@ -31,7 +31,5 @@ before_script:
 
 after_script:
 - "ruby script/travis/bundle_cache.rb"
-after_success:
-- "ruby script/travis/deploy.rb"
 
 script: "bundle exec rake db:create db:test:load spec"
